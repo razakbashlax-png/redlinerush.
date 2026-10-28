@@ -1,0 +1,10 @@
+services:
+  - type: web
+    name: redline-rush-server
+    runtime: node
+    rootDir: server
+    plan: free
+    region: frankfurt
+    buildCommand: npm install
+    startCommand: node server.js
+    healthCheckPath: /health
