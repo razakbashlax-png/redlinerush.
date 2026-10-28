@@ -57,8 +57,8 @@ const server = http.createServer((req, res) => {
   if (u === "/health") { res.writeHead(200, { "content-type": "text/plain" }); return res.end("ok"); }
   if (u === "/stats") { res.writeHead(200, { "content-type": "application/json", "access-control-allow-origin": "*" }); return res.end(JSON.stringify({ rooms: rooms.size, players: [...peers.values()].filter(p => p.ws).length })); }
   if (u === "/" || u === "/index.html") {
-    const f = path.join(__dirname, "public", "index.html");
-    fs.readFile(f, (e, d) => { if (e) { res.writeHead(200, { "content-type": "text/plain" }); return res.end("Redline Rush multiplayer server is running. Put the game's index.html in ./public to serve it from here."); } res.writeHead(200, { "content-type": "text/html; charset=utf-8", "cache-control": "no-cache" }); res.end(d); });
+   const f = path.join(__dirname, "index.html");
+     fs.readFile(f, (e, d) => { if (e) { res.writeHead(200, { "content-type": "text/plain" }); return res.end("Redline Rush multiplayer server is running. Put the game's index.html in ./public to serve it from here."); } res.writeHead(200, { "content-type": "text/html; charset=utf-8", "cache-control": "no-cache" }); res.end(d); });
     return;
   }
   res.writeHead(404); res.end("not found");
